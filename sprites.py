@@ -51,7 +51,7 @@ class Player(pygame.sprite.Sprite): # inherits from sprite class in pygame
             self.deg = 90
         if keystroke[pygame.K_SPACE]:
             now = pygame.time.get_ticks()
-            if now - self.previous > BULLET_ROF:  # if its been long enough since last shot then able to shoot
+            if now - self.previous > BULLET_ROF:  # if its been long enough since last shot then able to shoot.
                 self.previous = now
                 dir = vector(1, 0).rotate(-self.deg) #
                 position = self.position + OFFSET.rotate(-self.deg) # position is the player position + offset
