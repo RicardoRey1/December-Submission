@@ -13,7 +13,7 @@ class Game:
         pygame.key.set_repeat(500, 100)
         self.load_data()
 
-    # load a pre-exisiting map and graphics for the game
+    # load a pre-exisiting map and graphics for the game.
     def load_data(self):
         game_data = path.dirname(__file__)
         img_folder = path.join(game_data, 'img')# this will be the images for stuff in the game
