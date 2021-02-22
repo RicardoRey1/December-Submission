@@ -13,7 +13,7 @@ class Game:
         pygame.key.set_repeat(500, 100)
         self.load_data()
 
-    # load a pre-exisiting map and graphics for the game.
+    # load a pre-exisiting map and graphics for the game
     def load_data(self):
         game_data = path.dirname(__file__)
         img_folder = path.join(game_data, 'img')# this will be the images for stuff in the game
@@ -67,15 +67,17 @@ class Game:
     def update(self):
         # update the game loop
         self.all_sprites.update()
-        # player hit
-        # hits = pygame.sprite.spritecollide(self.player, self.zombies, False, self.player.rect)
-        # for hit in hits:
-             # self.player.health -= ZOMBIE_DMG
-            # hit.velo = vector(0, 0) # have zombie stop after hit
-            #  if self.player.health <= 0:
-                # self.playing = False # ends game
-        # if hits:
-            # self.player.position += vector( 20, 0).rotate(-hits[0].deg)
+        # player hit by z
+        hits = pygame.sprite.spritecollide(self.player, self.zombies, False)
+        for hit in hits:
+            self.player.health -= ZOMBIE_DMG
+            hit.velo = vector(0, 0) # have zombie stop after hit
+            if self.player.health <= 0:
+                self.playing = False # ends game
+        if hits:
+            self.player.position += vector( 20, 0).rotate(-hits[0].deg) # once the player gets hit,
+            # they are knocked back. This is so that damage isn't stacked
+
 
 
         # zombie hit
@@ -94,8 +96,11 @@ class Game:
     def draw(self):
         self.screen.fill(LIGHTGREY)
         self.all_sprites.draw(self.screen)
-        # self.draw_grid()
-
+        # self.draw_grid(), hiding the grid of the game
+        for sprite in self.all_sprites:
+            if isinstance(sprite, Zombie):
+                sprite.z_health() # if an instance of zombie then do z_health()
+            self.screen.blit(sprite.image,(sprite.rect) )
         pygame.display.flip()
 
     def events(self):
