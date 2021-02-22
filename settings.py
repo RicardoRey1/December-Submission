@@ -29,24 +29,10 @@ PLAYER_S = 'player_idle_s.png'
 PLAYER_HEALTH = 100
 
 # HUD
-# def draw_player_health(surf, x, y, percent):
-    # if percent < 0:
-       # percent = 0
-   # BAR_LENGTH = 100
-   # BAR_WIDTH = 20
-   # fill = percent * BAR_LENGTH
-   # fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
-   # if percent > 0.7:
-       # bar = GREEN
-   # elif percent > 0.4:
-       # bar = YELLOW
-   # else:
-       # bar = RED
-   # pygame.draw.rect(surf, bar, fill_rect)
 
 # weapons, settings will differ from weapon to weapon
 BULLET_IMG = 'bullet.png'
-BULLET_DMG = 10
+BULLET_DMG = 20
 BULLET_SPEED = 500
 BULLET_ROF = 400 # rate of fire
 TTLBULLET = 1000 # disappears after a second
@@ -54,7 +40,7 @@ OFFSET = vector(-5 ,0) # so that bullets position is coming out of gun
 # zombie
 ZOMBIE_IMG = 'zombie1.png'
 ZOMBIE_HEALTH = 100
-ZOMBIE_DMG = 20
+ZOMBIE_DMG = 10
 ZOMBIE_SPEED = 100
 # GRAPHICS PENDING
 # WALL_IMG
