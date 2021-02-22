@@ -16,6 +16,8 @@ class Player(pygame.sprite.Sprite): # inherits from sprite class in pygame
         self.deg = 0
         self.health = PLAYER_HEALTH
 
+    # def p_health, NOT FINISHED
+
     def move(self, dx=0, dy=0):
         # allow player to change x and y(move) values if wall_collision = false
         if not self.wall_collision(dx,dy):
@@ -24,7 +26,7 @@ class Player(pygame.sprite.Sprite): # inherits from sprite class in pygame
 
     def wall_collision(self, dx=0, dy=0 ):
         for wall in self.game.walls:
-            if wall.x == self.position.x +dx and wall.y == self.position.y +dy:
+            if wall.x == self.position.x + dx and wall.y == self.position.y + dy:
                 return True
         return False
 
@@ -51,7 +53,7 @@ class Player(pygame.sprite.Sprite): # inherits from sprite class in pygame
             self.deg = 90
         if keystroke[pygame.K_SPACE]:
             now = pygame.time.get_ticks()
-            if now - self.previous > BULLET_ROF:  # if its been long enough since last shot then able to shoot.
+            if now - self.previous > BULLET_ROF:  # if its been long enough since last shot then able to shoot
                 self.previous = now
                 dir = vector(1, 0).rotate(-self.deg) #
                 position = self.position + OFFSET.rotate(-self.deg) # position is the player position + offset
@@ -83,13 +85,13 @@ class Zombie(pygame.sprite.Sprite):
         self.deg = 0
 
     def z_health(self):
-        # colour of health bar changes depending on %
+        # colour of health bar changes depending on % of heslth
         if self.health > 70:
             bar = GREEN
         elif self.health > 40:
-            bar = YELLOW
-        else:
             bar = RED
+        else:
+            bar = YELLOW
         width = int(self.rect.width * self.health / 100) # width of healthbar = width of sprite x health as %
         self.health_bar = pygame.Rect(0, 0, width, 7) # healthbar rectangle setup
         if self.health < 100:
